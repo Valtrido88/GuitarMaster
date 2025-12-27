@@ -47,3 +47,19 @@ Próximos pasos
 - Integración IA real para análisis de desempeño y recomendaciones personalizadas.
 - Reconocimiento de acordes más preciso y evaluación de timing avanzada.
 # GuitarMaster
+
+## Método IA (beta)
+- Diagnóstico inicial: pruebas rápidas de ritmo (palmas), afinación (nota sostenida) y cambio de acordes.
+- Perfil del alumno: guarda métricas (precisión de ritmo, desviación en cents, tiempo medio de cambio).
+- Sesión diaria (10 min): cola adaptativa con calentamiento, técnica, fragmento de canción y repaso.
+- Runner de sesión: ejecución secuencial con cuenta atrás y paradas automáticas de cada segmento.
+- Ajustes: umbral de ritmo y tolerancia de afinación configurables.
+
+Acceso en la app
+- Diagnóstico: menú “Diagnóstico” → ejecuta los tests y guarda el perfil.
+- Sesión diaria: menú “Sesión diaria” → pulsa “Iniciar sesión completa”.
+- Ajustes: menú “Ajustes” → configura umbrales si detecta falsos positivos.
+
+Notas
+- Las métricas de ritmo/afinación son aproximadas y se ejecutan en el navegador.
+- El audio no se sube ni se almacena en servidores.
