@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#b31217"/>
+      <stop offset="1" stop-color="#e6642c"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="280" fill="url(#g)"/>
+  <g fill="#0b0b14" opacity="0.7">
+    <circle cx="100" cy="80" r="26"/>
+    <rect x="74" y="108" width="52" height="60" rx="10"/>
+    <ellipse cx="120" cy="168" rx="40" ry="24"/>
+    <rect x="88" y="150" width="64" height="6"/>
+  </g>
+  <g fill="#fff" opacity="0.35">
+    <rect x="86" y="126" width="28" height="8" rx="4"/>
+  </g>
+  <text x="100" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#fff">Paco de Lucía</text>
+</svg>

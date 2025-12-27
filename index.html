@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GuitarMaster — Asesor virtual</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="background-image">
+    <div class="background-overlay"></div>
+    <header class="topbar">
+      <h1>GuitarMaster</h1>
+      <nav class="nav">
+        <button data-view="home" class="nav-btn active">Inicio</button>
+        <button data-view="diagnostic" class="nav-btn">Diagnóstico</button>
+        <button data-view="session" class="nav-btn">Sesión diaria</button>
+        <button data-view="metronome" class="nav-btn">Metrónomo</button>
+        <button data-view="tuner" class="nav-btn">Afinador</button>
+        <button data-view="band" class="nav-btn">Karaoke + Banda</button>
+        <button data-view="songs" class="nav-btn">Canciones</button>
+        <button data-view="exercises" class="nav-btn">Ejercicios dedos</button>
+        <button data-view="chords" class="nav-btn">Acordes</button>
+        <button data-view="versus" class="nav-btn">Competición</button>
+        <button data-view="progress" class="nav-btn">Progreso</button>
+        <button data-view="achievements" class="nav-btn">Logros</button>
+        <button data-view="settings" class="nav-btn">Ajustes</button>
+      </nav>
+    </header>
+
+    <main id="views">
+      <section id="home" class="view visible">
+        <div class="posters-wall" aria-label="Pared de posters de guitarristas">
+          <figure class="poster"><img src="assets/posters/hendrix.svg" alt="Poster caricatura Jimi Hendrix" /><figcaption>Jimi Hendrix</figcaption></figure>
+          <figure class="poster"><img src="assets/posters/paco.svg" alt="Poster caricatura Paco de Lucía" /><figcaption>Paco de Lucía</figcaption></figure>
+          <figure class="poster"><img src="assets/posters/bbking.svg" alt="Poster caricatura B.B. King" /><figcaption>B.B. King</figcaption></figure>
+          <figure class="poster"><img src="assets/posters/vanhalen.svg" alt="Poster caricatura Eddie Van Halen" /><figcaption>Eddie Van Halen</figcaption></figure>
+          <figure class="poster"><img src="assets/posters/slash.svg" alt="Poster caricatura Slash" /><figcaption>Slash</figcaption></figure>
+          <figure class="poster"><img src="assets/posters/brianmay.svg" alt="Poster caricatura Brian May" /><figcaption>Brian May</figcaption></figure>
+          <figure class="poster"><img src="assets/posters/jimmypage.svg" alt="Poster caricatura Jimmy Page" /><figcaption>Jimmy Page</figcaption></figure>
+          <figure class="poster"><img src="assets/posters/clapton.svg" alt="Poster caricatura Eric Clapton" /><figcaption>Eric Clapton</figcaption></figure>
+        </div>
+        <div class="mode-map">
+          <div class="mode-tile" data-view="metronome"><h3>Metrónomo</h3><p>Pulso estable y tap-tempo</p></div>
+          <div class="mode-tile" data-view="tuner"><h3>Afinador</h3><p>Autocorrelación y cents</p></div>
+          <div class="mode-tile" data-view="band"><h3>Banda/Karaoke</h3><p>Letra + percusión/bajo</p></div>
+          <div class="mode-tile" data-view="exercises"><h3>Dedos</h3><p>1-2-3-4 y patrones</p></div>
+          <div class="mode-tile" data-view="chords"><h3>Acordes</h3><p>Cambios y rasgueos</p></div>
+          <div class="mode-tile" data-view="versus"><h3>Competición</h3><p>Cheer/Boo por desempeño</p></div>
+          <div class="mode-tile" data-view="songs"><h3>Canciones</h3><p>Filtrar por artista/estilo</p></div>
+          <div class="mode-tile" data-view="progress"><h3>Progreso</h3><p>Rango, puntos y racha</p></div>
+          <div class="mode-tile" data-view="achievements"><h3>Logros</h3><p>Insignias y metas</p></div>
+          <div class="mode-tile" data-view="settings"><h3>Ajustes</h3><p>Preferencias del sistema</p></div>
+        </div>
+        <div class="card">
+          <button id="enable-audio">Activar audio</button>
+          <button id="enable-mic">Conectar micrófono</button>
+        </div>
+        <div class="card" id="advisor-card">
+          <h3>Consejo</h3>
+          <p id="advice">—</p>
+        </div>
+      </section>
+
+      <section id="diagnostic" class="view">
+        <h2>Diagnóstico inicial</h2>
+        <div class="grid">
+          <label>BPM prueba ritmo <input id="diag-bpm" type="number" min="40" max="140" value="70" /></label>
+          <button id="diag-ryt-start">Test ritmo (20 s)</button>
+          <div id="diag-ryt-res" class="card">Ritmo: —</div>
+
+          <button id="diag-pitch-start">Test afinación (10 s)</button>
+          <div id="diag-pitch-res" class="card">Afinación: —</div>
+
+          <label>Acordes a probar <input id="diag-chords" type="text" value="C G"/></label>
+          <button id="diag-chords-start">Test cambio acordes (30 s)</button>
+          <div id="diag-chords-res" class="card">Cambio de acordes: —</div>
+        </div>
+        <div class="card">
+          <button id="diag-save-profile">Guardar perfil</button>
+          <div id="diag-summary">Perfil: —</div>
+        </div>
+      </section>
+
+      <section id="session" class="view">
+        <h2>Sesión diaria (10 min)</h2>
+        <div id="session-plan" class="list"></div>
+        <div class="grid">
+          <button id="session-run">Iniciar sesión completa</button>
+          <div id="session-status" class="card">Estado: listo</div>
+        </div>
+      </section>
+
+      <section id="metronome" class="view">
+        <h2>Metrónomo</h2>
+        <div class="grid">
+          <label>BPM <input id="metro-bpm" type="number" min="20" max="300" value="100" /></label>
+          <label>Compás
+            <select id="metro-signature">
+              <option value="4">4/4</option>
+              <option value="3">3/4</option>
+              <option value="2">2/4</option>
+            </select>
+          </label>
+          <button id="metro-start">Iniciar</button>
+          <button id="metro-stop">Detener</button>
+          <button id="metro-tap">Tap</button>
+        </div>
+        <div id="metro-visual" class="metro-visual"></div>
+      </section>
+
+      <section id="tuner" class="view">
+        <h2>Afinador</h2>
+        <div class="tuner">
+          <div class="needle" id="tuner-needle"></div>
+          <div class="tuner-info">
+            <div>Nota: <span id="tuner-note">—</span></div>
+            <div>Frecuencia: <span id="tuner-freq">—</span> Hz</div>
+            <div>Desviación: <span id="tuner-cents">—</span> cents</div>
+            <div>Objetivo: <span id="tuner-target">E2/A2/D3/G3/B3/E4</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="band" class="view">
+        <h2>Karaoke + Banda sintética</h2>
+        <div class="grid">
+          <label>BPM <input id="band-bpm" type="number" min="40" max="240" value="90" /></label>
+          <label>Progresión de acordes (p. ej. C G Am F)
+            <input id="band-chords" type="text" value="C G Am F" />
+          </label>
+          <button id="band-start">Reproducir</button>
+          <button id="band-stop">Detener</button>
+          <button id="band-simplify">Simplificar acordes</button>
+          <button id="band-apply-suggestion">Aplicar sugerencia</button>
+        </div>
+        <div id="band-teacher" class="card">Consejo del profe: —</div>
+        <label>Letra (una línea por compás)
+          <textarea id="band-lyrics" rows="6">Verso línea 1
+Verso línea 2
+Verso línea 3
+Verso línea 4</textarea>
+        </label>
+        <div id="lyrics-view" class="lyrics"></div>
+      </section>
+
+      <section id="songs" class="view">
+        <h2>Biblioteca de canciones</h2>
+        <div class="grid">
+          <label>Búsqueda
+            <input id="songs-search" type="text" placeholder="Título o artista" />
+          </label>
+          <label>Artista
+            <select id="songs-artist"><option value="">Todos</option></select>
+          </label>
+          <label>Década
+            <select id="songs-decade"><option value="">Todas</option><option>1960s</option><option>1970s</option><option>1980s</option><option>1990s</option><option>2000s</option><option>2010s</option><option>2020s</option></select>
+          </label>
+          <label>Estilo
+            <select id="songs-style"><option value="">Todos</option><option>Rock</option><option>Pop</option><option>Blues</option><option>Folk</option><option>Jazz</option><option>Metal</option></select>
+          </label>
+          <label>Importar JSON
+            <input id="songs-import" type="file" accept="application/json" />
+          </label>
+          <button id="songs-import-btn">Importar a biblioteca</button>
+        </div>
+        <ul id="songs-list" class="list"></ul>
+        <h3>Sugerencias del asesor</h3>
+        <ul id="advisor-suggestions" class="list"></ul>
+      </section>
+
+      <section id="exercises" class="view">
+        <h2>Ejercicios de dedos (1-2-3-4)</h2>
+        <div class="grid">
+          <label>Duración (min) <input id="ex-duration" type="number" min="1" max="60" value="5" /></label>
+          <label>BPM <input id="ex-bpm" type="number" min="40" max="240" value="80" /></label>
+          <button id="ex-start">Iniciar</button>
+          <button id="ex-stop">Detener</button>
+        </div>
+        <div id="ex-status" class="card">Listo</div>
+      </section>
+
+      <section id="chords" class="view">
+        <h2>Práctica de acordes</h2>
+        <div class="grid">
+          <label>De <input id="chord-from" type="text" value="C" /></label>
+          <label>A <input id="chord-to" type="text" value="G" /></label>
+          <label>BPM <input id="chords-bpm" type="number" min="40" max="240" value="80" /></label>
+          <button id="chords-start">Iniciar</button>
+          <button id="chords-stop">Detener</button>
+        </div>
+        <div id="chords-status" class="card">Listo</div>
+      </section>
+
+      <section id="versus" class="view">
+        <h2>Modo competición</h2>
+        <div class="grid">
+          <label>Rondas <input id="versus-rounds" type="number" min="1" max="10" value="3" /></label>
+          <label>Duración por ronda (s) <input id="versus-seconds" type="number" min="5" max="60" value="15" /></label>
+          <button id="versus-start">Comenzar</button>
+          <button id="versus-stop">Detener</button>
+          <label>
+            <input type="checkbox" id="versus-enable-boo" checked /> Habilitar abucheos
+          </label>
+        </div>
+        <div id="versus-score" class="card">P1: 0 | P2: 0</div>
+        <div id="versus-status" class="card">Listo para competir</div>
+        <div id="versus-winner" class="card"></div>
+      </section>
+
+      <section id="achievements" class="view">
+        <h2>Logros</h2>
+        <ul id="achievements-list" class="list"></ul>
+      </section>
+
+      <section id="progress" class="view">
+        <h2>Progreso diario</h2>
+        <div class="grid">
+          <div class="card">
+            <div><strong>Rango:</strong> <span id="rank-name">—</span></div>
+            <div><strong>Puntos:</strong> <span id="rank-points">0</span></div>
+            <div><strong>Racha:</strong> <span id="rank-streak">0</span> días</div>
+            <div><strong>Último entrenamiento:</strong> <span id="rank-last">—</span></div>
+          </div>
+          <div class="card">
+            <label>
+              Penalización automática por inactividad: día sin entrenar → −1 punto.
+            </label>
+          </div>
+        </div>
+        <h3>Tareas de hoy</h3>
+        <ul id="daily-list" class="list"></ul>
+      </section>
+
+      <section id="settings" class="view">
+        <h2>Ajustes</h2>
+        <label>
+          <input type="checkbox" id="crowd-enabled" checked /> Público (abucheos/ánimos)
+        </label>
+        <label>
+          <input type="checkbox" id="auto-bpm-range" /> Ajustar BPM al centro de tu rango al aplicar sugerencias
+        </label>
+        <div class="grid">
+          <label>Umbral de ritmo (energía)
+            <input id="rhythm-threshold" type="number" min="0" max="1" step="0.01" value="0.08" />
+          </label>
+          <label>Tolerancia afinación (cents)
+            <input id="pitch-tolerance" type="number" min="5" max="50" step="1" value="15" />
+          </label>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">Hecho con cariño para guitarristas — GuitarMaster</footer>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>

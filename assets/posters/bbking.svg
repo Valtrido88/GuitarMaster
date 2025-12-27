@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="280" fill="url(#g)"/>
+  <g fill="#0b0b14" opacity="0.7">
+    <circle cx="100" cy="80" r="26"/>
+    <rect x="70" y="108" width="60" height="62" rx="10"/>
+    <ellipse cx="140" cy="168" rx="34" ry="20" transform="rotate(10 140 168)"/>
+    <rect x="132" y="148" width="38" height="6" transform="rotate(10 151 151)"/>
+  </g>
+  <g fill="#fff" opacity="0.35">
+    <circle cx="90" cy="70" r="6"/>
+  </g>
+  <text x="100" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#fff">B.B. King</text>
+</svg>

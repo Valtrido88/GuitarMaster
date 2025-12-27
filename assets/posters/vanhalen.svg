@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ef4444"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="280" fill="url(#g)"/>
+  <g fill="#0b0b14" opacity="0.7">
+    <circle cx="100" cy="80" r="26"/>
+    <rect x="74" y="108" width="52" height="60" rx="10"/>
+    <ellipse cx="150" cy="162" rx="30" ry="18" transform="rotate(-25 150 162)"/>
+    <rect x="140" y="148" width="40" height="6" transform="rotate(-25 160 151)"/>
+  </g>
+  <g stroke="#fff" stroke-width="3" opacity="0.4">
+    <line x1="20" y1="40" x2="180" y2="240"/>
+    <line x1="180" y1="40" x2="20" y2="240"/>
+  </g>
+  <text x="100" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#fff">Eddie Van Halen</text>
+</svg>
